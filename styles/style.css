@@ -1,4 +1,56 @@
+body {
+   margin: 0;
+   font-family: Arial, sans-serif;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background-color: #0f0f0f;
+}
+
+.container {
+   text-align: center;
+}
+
+.header h1 {
+   font-size: 100px;
+   margin-bottom: 100px;
+   color: #663300;
+}
+
+.buttons {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+}
+
+.button {
+   padding: 15px 30px;
+   background-color: #236826;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   text-decoration: none;
+   cursor: pointer;
+   font-size: 18px;
+}
+
+.button:hover {
+   background-color: #45a049;
+}
+
+
+
+
+
 /* Define animations using CSS or JavaScript
    Use animations to create smooth transitions and visual effects */
 
    /* Add custom themes, sound effects, and additional styles Store custom styles in the 'styles' folder Apply these enhancements as needed to improve the user experience */
+
+
+
+
+ 
+  
