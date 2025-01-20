@@ -25,7 +25,22 @@ body {
     right: 10px;
 }
 
-.button, button {
+.logout-button {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+button {
     padding: 15px 25px;
     background-color: #007bff;
     color: white;
@@ -33,25 +48,15 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.button:hover, button:hover {
+button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-.topic-button {
-    margin: 10px;
-    width: calc(100%/3 - 20px);
-    display: inline-block;
-}
-
-.logout-button {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.quiz-button {
+.submit-review-button {
     padding: 15px 25px;
     background-color: #28a745;
     color: white;
@@ -60,24 +65,112 @@ body {
     cursor: pointer;
     font-size: 18px;
     transition: background-color 0.3s;
-    display: block;
-    margin: 10px auto; /* Center align the buttons */
-    width: calc(100% - 40px); /* Adjust width */
+    width: 100%;
 }
 
-.quiz-button:hover {
+.submit-review-button:hover {
     background-color: #218838;
 }
 
-/* Additional styling */
-.choices {
-    display: flex;
-    flex-direction: column;
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
     align-items: center;
 }
 
-.question {
-    margin-bottom: 20px;
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fade-in 0.3s ease;
+    position: relative;
+    width: 80%;
+    max-width: 400px;
 }
 
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+}
+
+input[type="number"] {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fade-in 0.3s ease forwards;
+}
+
+.fade-out {
+    animation: fade-in 0.3s ease reverse;
+}
+
+/* Quiz Buttons */
+.topic-button {
+    display: block;
+    padding: 15px 20px;
+    margin: 10px auto;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    width: 80%; /* Centered and responsive */
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.topic-button:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(45deg, #0056b3, #004494);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.topic-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
 
