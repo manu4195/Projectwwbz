@@ -20,6 +20,8 @@ if (isset($_GET['logout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Show</title>
     <link rel="stylesheet" href="../css/gameShow.css">
+    <link rel="stylesheet" href="path/to/global.css">
+
 </head>
 <body>
     <div class="container">

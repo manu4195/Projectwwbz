@@ -73,6 +73,8 @@ if (isset($_GET['quiz_id'])) {
     <title>Quiz</title>
     <link rel="stylesheet" href="../css/gameShow.css">
     <link rel="stylesheet" href="../css/quizStyles.css">
+    <link rel="stylesheet" href="path/to/global.css">
+
 </head>
 <body>
     <div class="quiz-container">

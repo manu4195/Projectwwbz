@@ -25,6 +25,8 @@ if (isset($_GET['quiz_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Results</title>
     <link rel="stylesheet" href="../css/gameShow.css">
+    <link rel="stylesheet" href="path/to/global.css">
+
 </head>
 <body>
     <div class="container">
