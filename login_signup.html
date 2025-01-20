@@ -22,7 +22,7 @@
         </div>
         <div id="signup" class="form-container">
             <h2>Sign Up</h2>
-            <form action="php/signup-process.php" method="post">
+            <form action="php/signup_process.php" method="post" onsubmit="return redirectToGameShow()">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>
@@ -36,6 +36,11 @@
             document.getElementById('login').style.display = 'none';
             document.getElementById('signup').style.display = 'none';
             document.getElementById(formId).style.display = 'block';
+        }
+
+        function redirectToGameShow() {
+            window.location.href = "gameShow.php";
+            return false;  // Prevent actual form submission
         }
     </script>
 </body>

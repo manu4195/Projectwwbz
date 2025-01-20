@@ -5,39 +5,71 @@ body {
    justify-content: center;
    align-items: center;
    height: 100vh;
-   background-color: #eef2f5;
+   background-color: #f4e3b8;
 }
 
 .container {
    width: 100%;
    max-width: 400px;
    padding: 30px;
-   background-color: #fff;
+   background-color: #90e507;
    border-radius: 15px;
    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
    text-align: center;
 }
 
-.button, button {
+.button, .logout-button, button {
+   display: inline-block;
    padding: 15px 25px;
-   background-color: #007bff;
+   margin: 10px 0;
+   background-color: #9a7308;
    color: white;
    border: none;
    border-radius: 5px;
    cursor: pointer;
    font-size: 18px;
-   transition: background-color 0.3s;
+   transition: background-color 0.3s, transform 0.3s;
 }
 
-.button:hover, button:hover {
+.button:hover, .logout-button:hover, button:hover {
    background-color: #0056b3;
+   transform: scale(1.05);
 }
 
-/* Additional CSS for the logout button */
+/* Specific styling for logout button */
 .logout-button {
-   margin-top: 20px;
-   text-align: center;
+   position: fixed;
+   top: 10px;
+   right: 10px;
+   padding: 10px 20px;
+   margin: 0;
+   background-color: #dc3545;
+   font-size: 16px;
 }
+
+.logout-button:hover {
+   background-color: #c82333;
+}
+
+/* Additional CSS for positioning and layout */
+.flex-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.question {
+   margin-bottom: 20px;
+   font-size: 18px;
+   color: #555;
+}
+
+.choices {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
 
 
 
