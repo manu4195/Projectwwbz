@@ -1,16 +1,16 @@
 <?php
-$dsn = 'mysql:host=localhost;dbname=projectwwbz';
+$dsn = 'mysql:host=localhost;dbname=projectwwbz;charset=utf8'; // Use UTF-8 encoding for better compatibility
 $username = 'root'; // Default XAMPP username
 $password = ''; // Default XAMPP password is empty
 
 try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "";
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 ?>
+
 <!-- //  Create the gameshow_db database
 //    Create tables:
 //        - Users: id, username, password, user_type
