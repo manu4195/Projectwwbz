@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (isset($_SESSION['user_id'])) {
+    // Destroy the session if it is active
+    session_destroy();
+    header('Location: login_signup.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +32,7 @@
         </div>
         <div id="signup" class="form-container">
             <h2>Sign Up</h2>
-            <form action="php/signup_process.php" method="post">
+            <form action="php/signup-process.php" method="post">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Password" required>

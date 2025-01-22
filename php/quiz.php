@@ -3,7 +3,14 @@ session_start();
 require 'db_connect.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ../login_signup.html');
+    header('Location: login_signup.php');
+    exit();
+}
+
+// If the quiz is completed, destroy the session and redirect
+if (isset($_SESSION['quiz_completed']) && $_SESSION['quiz_completed'] === true) {
+    session_destroy();
+    header('Location: login_signup.php');
     exit();
 }
 
@@ -55,6 +62,7 @@ if (isset($_GET['quiz_id'])) {
             $stmt->execute([$user_id, $quiz_id, $score, $correct_answers, $incorrect_answers]);
 
             unset($_SESSION['user_responses']);
+            $_SESSION['quiz_completed'] = true;  // Set quiz completion flag
             header('Location: results_page.php?quiz_id=' . $quiz_id);
             exit();
         }
@@ -74,7 +82,6 @@ if (isset($_GET['quiz_id'])) {
     <link rel="stylesheet" href="../css/gameShow.css">
     <link rel="stylesheet" href="../css/quizStyles.css">
     <link rel="stylesheet" href="path/to/global.css">
-
 </head>
 <body>
     <div class="quiz-container">
@@ -95,4 +102,3 @@ if (isset($_GET['quiz_id'])) {
     </div>
 </body>
 </html>
-

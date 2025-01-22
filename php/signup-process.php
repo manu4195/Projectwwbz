@@ -4,7 +4,7 @@ require 'db_connect.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    
+
     // Check if the username or email already exists
     $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ? OR email = ?');
     $stmt->execute([$username, $email]);
@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Insert user into the database
         $stmt = $pdo->prepare('INSERT INTO users (username, email, password) VALUES (?, ?, ?)');
         if ($stmt->execute([$username, $email, $password])) {
-            header('Location: login_signup.html');
+            // Redirect to login_signup.php
+            header('Location: ../login_signup.php');
             exit();
         } else {
             echo 'Error signing up';
