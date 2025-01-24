@@ -3,14 +3,7 @@ session_start();
 require 'db_connect.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login_signup.php');
-    exit();
-}
-
-// If the quiz is completed, destroy the session and redirect
-if (isset($_SESSION['quiz_completed']) && $_SESSION['quiz_completed'] === true) {
-    session_destroy();
-    header('Location: login_signup.php');
+    header('Location: ../login_signup.php');
     exit();
 }
 
@@ -56,13 +49,14 @@ if (isset($_GET['quiz_id'])) {
                 }
             }
 
-            $score = ($correct_answers / count($questions)) * 100;
-
             $stmt = $pdo->prepare('INSERT INTO results (user_id, quiz_id, score, correct_answers, incorrect_answers) VALUES (?, ?, ?, ?, ?)');
-            $stmt->execute([$user_id, $quiz_id, $score, $correct_answers, $incorrect_answers]);
+            $stmt->execute([$user_id, $quiz_id, $correct_answers, $correct_answers, $incorrect_answers]);
+
+            // Update total points in the users table
+            $stmt = $pdo->prepare('UPDATE users SET total_points = total_points + ? WHERE user_id = ?');
+            $stmt->execute([$correct_answers, $user_id]);
 
             unset($_SESSION['user_responses']);
-            $_SESSION['quiz_completed'] = true;  // Set quiz completion flag
             header('Location: results_page.php?quiz_id=' . $quiz_id);
             exit();
         }

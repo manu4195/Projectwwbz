@@ -15,6 +15,11 @@ if (isset($_GET['quiz_id'])) {
     $stmt = $pdo->prepare('SELECT * FROM results WHERE user_id = ? AND quiz_id = ? ORDER BY created_at DESC LIMIT 1');
     $stmt->execute([$user_id, $quiz_id]);
     $result = $stmt->fetch();
+
+    // Fetch the total points for the user
+    $stmt = $pdo->prepare('SELECT total_points FROM users WHERE user_id = ?');
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch();
 }
 
 // Destroy the session but stay on the page
@@ -34,12 +39,12 @@ session_destroy();
     <div class="container">
         <h1>Your Quiz Results</h1>
         <?php if ($result): ?>
-            <p>Score: <?php echo htmlspecialchars($result['score']); ?>%</p>
             <p>Correct Answers: <?php echo htmlspecialchars($result['correct_answers']); ?></p>
             <p>Incorrect Answers: <?php echo htmlspecialchars($result['incorrect_answers']); ?></p>
         <?php else: ?>
             <p>No results found.</p>
         <?php endif; ?>
+        <p>Total Points: <?php echo htmlspecialchars($user['total_points']); ?></p>
         <button onclick="window.location.href='../login_signup.php'" class="button">Logout</button>
     </div>
 </body>
