@@ -32,10 +32,11 @@ if (isset($_SESSION['user_id'])) {
         </div>
         <div id="signup" class="form-container">
             <h2>Sign Up</h2>
-            <form action="php/signup-process.php" method="post">
+            <form id="signupForm" action="php/signup-process.php" method="post" onsubmit="return validatePassword()">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <input type="password" id="confirm_password" placeholder="Confirm Password" required>
                 <button type="submit" class="button">Sign Up</button>
             </form>
         </div>
@@ -51,6 +52,18 @@ if (isset($_SESSION['user_id'])) {
         document.addEventListener('DOMContentLoaded', () => {
             showForm('signup');
         });
+
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const confirm_password = document.getElementById('confirm_password').value;
+
+            if (password !== confirm_password) {
+                alert('dumbass password is wrong. try again');
+                return false;
+            }
+            return true;
+        }
     </script>
 </body>
 </html>
+
